@@ -8,7 +8,7 @@ export default ( theme ) => {
 		} ,
 
 		cell : {
-			flex 				: 1.9 ,
+			flex 				: 1.5 ,
 			paddingHorizontal 	: 2 ,
 			paddingVertical 	: 10
 		} ,
