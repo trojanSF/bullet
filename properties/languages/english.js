@@ -1,18 +1,18 @@
 
 export default {
-	
+
 	en : {
 
 		id 		: 'en' 				,
 		names 	: {
 			en 	: 'English' 		,
-			es 	: 'Inglés' 			,
-			de 	: 'Englisch' 		,
-			fr 	: 'Anglais' 		,
-			ms 	: 'Bahasa Inggeris' ,
-			tr 	: 'Ingilizce' 		,
-			vi 	: 'Anh' 			,
-			zh 	: '英语'
+			//es 	: 'Inglés' 			,
+			//de 	: 'Englisch' 		,
+			//fr 	: 'Anglais' 		,
+			//ms 	: 'Bahasa Inggeris' ,
+			//tr 	: 'Ingilizce' 		,
+			//vi 	: 'Anh' 			,
+			//zh 	: '英语'
 		} ,
 
 		actions 		: {
@@ -31,7 +31,7 @@ export default {
 			search 		: 'Please enter a search term' 	,
 			update 		: 'Update'
 		} ,
-	
+
 		denominations 	: {
 
 			btc 		: {
@@ -50,7 +50,7 @@ export default {
 
 			bull 			: {
 
-				404 		: 'Looks like there has been in a problem in some of the data. We have been unable to calculate the latest Bull - sorry!' ,
+				404 		: 'Looks like there has been in a problem in some of the data. We have been unable to calculate the featured coin/token - sorry!' ,
 
 				changes 	: {
 					hour 	: 'Last Hour' 	,
@@ -59,7 +59,7 @@ export default {
 					week 	: 'Last Week'
 				} ,
 
-				description : 'The Bull rating is a number based off the total volume of coins moved in the last 24 hours by market cap, price and latest trending time frame change The time frame can be as little as an hour or at most a day. The higher this number is the more likely the currency is trending in a positive direction.' ,
+				description : 'Our BLACK rating is a number based off the total volume of coins moved in the last 24 hours by market cap, price and latest trending time frame change The time frame can be as little as an hour or at most a day. The higher this number is the more likely the currency is trending in a positive direction.' ,
 
 				notice 		: 'This rating is based off of a calculation from the top {{placeholder}} crypto currencies.' ,
 
@@ -73,9 +73,9 @@ export default {
 					volume 		: '24 Hour Volume'
 				} 										,
 
-				rating 			: 'Bull Rating' 		,
+				rating 			: 'BLACK Rating' 		,
 
-				title 			: 'Latest Bull' 	,
+				title 			: 'Featured Coin/Token' 	,
 
 				values 			: {
 					title 		: 'Prices'
@@ -93,11 +93,11 @@ export default {
 					rank 	: 'Rank' 	,
 					change 	: '24H' 	,
 					price 	: 'Price' 	,
-					rating 	: 'Rating' 
+					rating 	: 'Rating'
 				} ,
 				none 		: 'No currencies found for search term'
 			} ,
-			
+
 			converter 		: {
 				title 		: 'Converter' ,
 				placeholder : 'Amount'
@@ -116,11 +116,11 @@ export default {
 			language 		: {
 				title 		: 'Change language'
 			} ,
-			
+
 			news 			: {
 				title 		: 'News'
 			} ,
-			
+
 			portfolio 		: {
 				404 		: 'You have not added any currencies to your portfolio. Please add them from the currency detail screen and we\'ll be able to advise you of an estimated worth for your coin collection' ,
 				description : 'Add {{placeholder}} to your portfolio list to keep a track of all your coins and their combined worth.' ,
@@ -130,7 +130,7 @@ export default {
 					price 	: 'Price' 	,
 					total 	: 'Total'
 				} ,
-				title 		: 'Portfolio'
+				title 		: 'My Portfolio'
 			} ,
 
 			settings 		: {
@@ -138,8 +138,8 @@ export default {
 			} ,
 
 			share 			: {
-				title 		: 'Cryptobullography' ,
-				summary 	: 'Find the latest bull on the cryptocurrency market making the biggest noise! #Cryptobullography'
+				title 		: 'Blackapp' ,
+				summary 	: 'Manage and track your crypto coins and tokens and all the latest news in the cryptocurrency market! #blackapp'
 			} ,
 
 			theme 			: {
@@ -161,27 +161,23 @@ export default {
 			donate 		: {
 				action 		: 'Copy {{placeholder}} address' ,
 				title 		: 'Donate' ,
-				body 		: 'Please help this application stay ad free and further development by donating. Pressing the below buttons will copy the wallet address to your clipboard.' ,
+				body 		: 'Support continued development and updates by donating. Pressing the below buttons will copy the wallet address to your clipboard.' ,
 				wallets 	: [
 					{
 						name 	: 'Ethereum' ,
-						id 		: '0x790b032d497131296eae4250a4840785dfcfd83e'
+						id 		: 'n/a'
 					} ,
 					{
-						name 	: 'BitCoin' ,
-						id 		: '1MGkY3ZtvPVZUrg68eMdeKcjAv5FwD7hhm'
+						name 	: 'Bitcoin' ,
+						id 		: 'n/a'
 					} ,
 					{
 						name 	: 'LiteCoin' ,
-						id 		: 'Li5YUuaso9Dzmf1ZB9qrh9QBfy9TWeLTdJ'
+						id 		: 'n/a'
 					} ,
 					{
-						name 	: 'Groestlcoin' ,
-						id 		: 'FqmnNi5CVUi3wPBhzCZkTWRyE666j6oYat'
-					} , 
-					{
-						name 	: 'NEO' ,
-						id 		: 'ARr1SNboRfbHEjnpnrdVkpApz9cNknS7hL'
+						name 	: 'XRP' ,
+						id 		: 'n/a'
 					}
 				]
 			}
