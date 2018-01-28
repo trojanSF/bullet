@@ -24,7 +24,7 @@ const 	manager 	= ( id ) => new FacebookAds.NativeAdsManager ( id , 1 ) 		,
 							{ language.actions.ad }
 						</Text>
 						<View 	style = { appearance.content }>
-							<Image 
+							<Image
 								source 	= {{
 									uri : advert.icon
 								}}
@@ -32,7 +32,7 @@ const 	manager 	= ( id ) => new FacebookAds.NativeAdsManager ( id , 1 ) 		,
 							/>
 							<View style = { appearance.column 	}>
 								<View>
-									<Text 
+									<Text
 										numberOfLines 	= { 1 					}
 										style 			= { appearance.title 	}
 									>
@@ -40,14 +40,14 @@ const 	manager 	= ( id ) => new FacebookAds.NativeAdsManager ( id , 1 ) 		,
 									</Text>
 								</View>
 								<View>
-									<Text 
+									<Text
 										numberOfLines 	= { 1 					}
 										style 			= { appearance.description 	}>
 										{ advert.description }
 									</Text>
 								</View>
 								<View>
-									<Text 
+									<Text
 										numberOfLines 	= { 1 				}
 										style 			= { appearance.cta 	}
 									>
@@ -66,7 +66,7 @@ export default class ButtonAd extends React.Component {
 	render () {
 
 		return (
-			<Component 
+			<Component
 				adsManager 	= { manager ( this.props.id )}
 				language 	= { this.props.language 	}
 				theme 		= { this.props.theme 		}
@@ -74,4 +74,3 @@ export default class ButtonAd extends React.Component {
 		);
 	}
 };
-

@@ -31,7 +31,7 @@ export default class Overview extends React.Component {
 		Animated.timing (
 			this.state.fade ,
 			{
-				toValue 	: 1, 
+				toValue 	: 1,
 				duration 	: 500
 			}
 		).start ();
@@ -45,8 +45,8 @@ export default class Overview extends React.Component {
 
 		if ( this.props.bull.rating ) {
 
-			return (	
-				<Animated.Text 
+			return (
+				<Animated.Text
 					style = {{
 						...bulls.rating ,
 						opacity : this.state.fade
@@ -76,8 +76,8 @@ export default class Overview extends React.Component {
 				bulls 		= bull 		( theme ) 	;
 
 		// If we're loading, there is no bull or an error - don't draw Le Bull
-		if ( 
-			this.props.bull.loading || 
+		if (
+			this.props.bull.loading ||
 			this.props.bull.error 	||
 			this.props.bull.rating === 0
 		) {
@@ -86,26 +86,26 @@ export default class Overview extends React.Component {
 
 		return (
 			<View 	style = { arrange.fill }>
-				<View 	
+				<View
 					style = {{
 						...arrange.row 	,
 						...scenery.header
 					}}
 				>
-					<Image 	
+					<Image
 						style 	= { bulls.icon }
 						source 	= {{
-							uri : images.currencies.large ( this.props.bull.id 	) 
+							uri : images.currencies.large ( this.props.bull.id 	)
 						}}
-					/>	
-					<Heading 
+					/>
+					<Heading
 						theme 	= { theme 															}
-						title 	= { this.props.bull.name + ' ( ' +  this.props.bull.symbol + ' )' 	} 
+						title 	= { this.props.bull.name + ' ( ' +  this.props.bull.symbol + ' )' 	}
 						type 	= '1'
 					/>
 				</View>
-				<View style 	= { bulls.view }>
-					<Heading 
+				{/*<View style 	= { bulls.view }>
+					<Heading
 						theme 	= { theme 							}
 						title 	= { language.screens.bull.rating 	}
 						type 	= '2'
@@ -117,26 +117,28 @@ export default class Overview extends React.Component {
 					<Text style = { bulls.notice }>
 						{ language.screens.bull.notice.replace ( '{{placeholder}}' , this.props.bull.competitors )}
 					</Text>
-				</View>
-				<View 	style 		= { ads.body 				}>
-					<Advert 
-						id 			= { adverts.bull.button [ 0 ]}
-						language 	= { language 				}
-						theme 		= { theme 					} 
-					/>
-					<Advert 
-						id 			= { adverts.bull.button [ 1 ]}
-						language 	= { language 				}
-						theme 		= { theme 					} 
-					/>
-				</View>
+				</View>*/}
+				{
+				// 	<View 	style 		= { ads.body 				}>
+				// 	<Advert
+				// 		id 			= { adverts.bull.button [ 0 ]}
+				// 		language 	= { language 				}
+				// 		theme 		= { theme 					}
+				// 	/>
+				// 	<Advert
+				// 		id 			= { adverts.bull.button [ 1 ]}
+				// 		language 	= { language 				}
+				// 		theme 		= { theme 					}
+				// 	/>
+				// </View>
+			  }
 				<View style = {{
 					...bulls.stripe ,
 					...{
 						marginBottom : 15
 					}
 				}}>
-					<Sections 
+					<Sections
 						language 	= { language 	}
 						theme 		= { theme 		}
 						sections 	= {[
@@ -149,7 +151,7 @@ export default class Overview extends React.Component {
 							// 			suffix 		: '%' 									,
 							// 			type 		: 'highlight' 							,
 							// 			value 		: this.props.bull.change.hour
-							// 		} 														, 
+							// 		} 														,
 							// 		{
 							// 			property 	: language.screens.bull.changes.day 	,
 							// 			suffix 		: '%' 									,
@@ -172,7 +174,7 @@ export default class Overview extends React.Component {
 										prefix 		: currency.symbol 						,
 										property 	: currency.names [ language.id ] 		,
 										value 		: this.props.bull.prices.fiat
-									} , 
+									} ,
 									{
 										prefix 		: language.denominations.btc.symbol 	,
 										property 	: language.denominations.btc.name 		,
@@ -196,11 +198,11 @@ export default class Overview extends React.Component {
 							// 		{
 							// 			property 	: language.screens.bull.market.available ,
 							// 			value 		: this.props.bull.supply.available
-							// 		} 														, 
+							// 		} 														,
 							// 		{
 							// 			property 	: language.screens.bull.market.total 	,
 							// 			value 		: this.props.bull.supply.total
-							// 		} 														, 
+							// 		} 														,
 							// 		{
 							// 			prefix 		: currency.symbol 						,
 							// 			property 	: language.screens.bull.market.volume 	,
@@ -209,7 +211,7 @@ export default class Overview extends React.Component {
 							// 	]
 							// }
 
-						]} 
+						]}
 					/>
 				</View>
 			</View>

@@ -39,26 +39,26 @@ export default connect (
 				theme 	= screenProps.theme 	;
 
 		return {
-			headerLeft 	: <Action 
+			headerLeft 	: <Action
 				icon 	= 'ios-share-outline'
 				press 	= {() => {
 
 					const 	platform 	= Platform.OS;
 
-					analytics.event ( 'cryptobullography' , 'share' , 'open' , platform );
+					analytics.event ( 'blackapp' , 'share' , 'open' , platform );
 					Share.share 	(
 						{
 							message 	: language.screens.share.summary 	,
 							title 		: language.screens.share.title 		,
 							url 		: application.store ()
-						} , 
+						} ,
 						{
 							dialogTitle : language.screens.share.title 		,
 							tintColor 	: theme.chrome
 						}
 					)
-					.then 	(() 		=> analytics.event ( 'cryptobullography' , 'share' , 'success' 	, platform 	))
-					.catch 	(( error ) 	=> analytics.event ( 'cryptobullography' , 'share' , 'error' 	, platform 	));
+					.then 	(() 		=> analytics.event ( 'blackapp' , 'share' , 'success' 	, platform 	))
+					.catch 	(( error ) 	=> analytics.event ( 'blackapp' , 'share' , 'error' 	, platform 	));
 				}}
 				value 	= { language.actions.share }
 			/> ,
@@ -90,11 +90,11 @@ export default connect (
 	componentWillMount () {
 
 		this.props.dispatch ( actions.get ());
-	} 
+	}
 
-	row ({ 
-		index , 
-		item 
+	row ({
+		index ,
+		item
 	}) {
 
 		const 	date 		= Date.parse ( item.pubdate ) 	,
@@ -104,7 +104,7 @@ export default connect (
 				stripe 		= index % 2 === 0 ? theme.base : theme.primary;
 
 		return (
-			<TouchableOpacity 
+			<TouchableOpacity
 				style 	= {{
 					...appearance.view ,
 					...{
@@ -112,7 +112,7 @@ export default connect (
 					}
 				}}
 				onPress = {() => {
-				
+
 					analytics.event ( 'news' , 'open' , item.link 	);
 					Linking.openURL ( item.link 					);
 				}}
@@ -145,12 +145,12 @@ export default connect (
 	}
 
 	refresh () {
-	
-		analytics.event ( 
-			'news' 		, 
-			'refresh' 	, 
-			'get' 		, 
-			'user' 	
+
+		analytics.event (
+			'news' 		,
+			'refresh' 	,
+			'get' 		,
+			'user'
 		);
 		this.props.dispatch ( actions.get ());
 	}
@@ -163,12 +163,12 @@ export default connect (
 				// appearance 	= style ( theme ) 		;
 
 		if ( this.props.news.loading ) {
-			
+
 			return (
 				<View  style 	= { scenery.body 			}>
-					<Loader 
+					<Loader
 						loading = { this.props.news.loading }
-						size 	= 'large' 
+						size 	= 'large'
 						theme 	= { theme 					}
 					/>
 				</View>
@@ -181,7 +181,7 @@ export default connect (
 
 			analytics.screen 	( 'news:500' 				);
 			return 				(
-				<Error 
+				<Error
 					error 		= { this.props.news.error 	}
 					language 	= { language 				}
 					press 		= { this.refresh 			}

@@ -38,20 +38,20 @@ export default class ChartTree extends React.Component {
 					title 	= this.format 	( data [ 0 ]) 								,
 					item 	= {
 						key 	: data [ 0 ] + ':' + index ,
-						value 	: scaled 
+						value 	: scaled
 					};
 
-			if ( 
-				scaled 
-				&& ( 
-					index === 0 || 
+			if (
+				scaled
+				&& (
+					index === 0 ||
 					(
-						sections [ sections.length - 1 ] && 
+						sections [ sections.length - 1 ] &&
 						sections [ sections.length - 1 ].title !== title
 					)
 				)
 			) {
-				
+
 				sections.push ({
 					data 	: [ item ] ,
 					title 	: title
@@ -74,7 +74,7 @@ export default class ChartTree extends React.Component {
 
 		let 	data 		= this.props.data 		,
 				values 		= {} 					;
-	
+
 		values.max 		= max ( data , ( item ) => item [ 1 ]);
 		values.min 		= min ( data , ( item ) => item [ 1 ]);
 		values.middle 	= ( values.max + values.min 	) / 2;
@@ -82,21 +82,21 @@ export default class ChartTree extends React.Component {
 		values.closing 	= ( values.max + values.middle 	) / 2;
 
 		// The GRAPH API DOES NOT SUPPORT MULTI CURRENCY YET
-		return ( 
-			<AxisY 
-				data = {[ 
+		return (
+			<AxisY
+				data = {[
 					'$' + numbers.format ( values.max.toFixed 		( 2 )) ,
 					'$' + numbers.format ( values.closing.toFixed 	( 2 )) ,
 					'$' + numbers.format ( values.middle.toFixed 	( 2 )) ,
 					'$' + numbers.format ( values.opening.toFixed 	( 2 )) ,
 					'$' + numbers.format ( values.min.toFixed 		( 2 ))
-				]} 
+				]}
 				theme = { theme }
-			/> 
+			/>
 		);
 	}
 
-	row ({ 
+	row ({
 		index 	,
 		item 	,
 		section
@@ -110,9 +110,9 @@ export default class ChartTree extends React.Component {
 				end 		= index === section.data.length - 1 ,
 				left 		= beginning ? 2 : 1 				,
 				right 		= end 		? 2 : 1 				;
-			
-		return ( 
-				<Bar 
+
+		return (
+				<Bar
 					style 		= { appearance.tree.bar }
 					color 		= { pigment 			}
 					value 		= { item.value 			}
@@ -130,7 +130,7 @@ export default class ChartTree extends React.Component {
 				appearance 	= style ( theme ).tree.section 	;
 
 		return (
-			<Header 
+			<Header
 				style = { appearance 	}
 				value = { section.title }
 			/>
@@ -140,14 +140,14 @@ export default class ChartTree extends React.Component {
 	setScales () {
 
 		this.scales = {
-			
+
 			height : scaleLinear ()
-				.domain ([ 
+				.domain ([
 					0 ,
 					max ( this.props.data , ( item ) => item [ 1 ])
 				])
-				.range ([ 
-					0 , 
+				.range ([
+					0 ,
 					device.height / 3
 				])
 		};
@@ -161,7 +161,7 @@ export default class ChartTree extends React.Component {
 				appearance 	= style ( theme ) 		;
 
 		if ( this.props.loading ) {
-			
+
 			return (
 				<View style = { appearance.tree.loading 	}>
 					<Loader
@@ -180,7 +180,7 @@ export default class ChartTree extends React.Component {
 				<View style = {{
 					height 	: Math.round ( device.height / 3 ) + 8
 				}}>
-					<Error 
+					<Error
 						error 	= { this.props.error 		}
 						press 	= { this.props.refresh 		}
 						text 	= { language.errors.ajax 	}
@@ -191,16 +191,16 @@ export default class ChartTree extends React.Component {
 		}
 
 		this.setScales 	();
-		
+
 		return 			(
 			<View style = { appearance.tree.view }>
 				{ this.header ()}
-				<SectionList 
+				<SectionList
 					horizontal 						= { true 							}
 					initialNumToRender 				= { Math.round ( device.width / 10 	)}
 					renderItem 						= { this.row 						}
 					renderSectionHeader 			= { this.section 					}
-					sections 						= { this.sections 					()}	
+					sections 						= { this.sections 					()}
 					showsHorizontalScrollIndicator 	= { false 							}
 					showsVerticalScrollIndicator 	= { false 							}
 					style 							= { appearance.tree.chart 			}

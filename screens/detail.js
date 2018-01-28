@@ -45,15 +45,15 @@ export default connect (
 
 			title 			: `${ name } ${ language.screens.detail.title }` ,
 
-			headerLeft 		: <Back 
-				press 		= {() => navigation.goBack 	()} 
+			headerLeft 		: <Back
+				press 		= {() => navigation.goBack 	()}
 				value 		= { language.actions.return }
 			/> ,
 
-			headerRight 	: <Image 
+			headerRight 	: <Image
 				style 		= { banner ( theme ).icon }
 				source 		= {{
-					uri 	: images.currencies.small ( navigation.state.params.item.id ) 
+					uri 	: images.currencies.small ( navigation.state.params.item.id )
 				}}
 			/>
 		};
@@ -66,7 +66,7 @@ export default connect (
 		this.state 	= {
 			modal 	: false
 		};
- 
+
 	}
 
 	componentWillMount () {
@@ -84,8 +84,8 @@ export default connect (
 
 	close () {
 
-		this.setState ({ 
-			modal 	: false 
+		this.setState ({
+			modal 	: false
 		});
 	}
 
@@ -105,25 +105,28 @@ export default connect (
 		return 				(
 			<ScrollView style = { scenery.body 		}>
 				<View 	style = { arrange.fill 		}>
-					<View 	
+					<View
 						style = {{
 							...arrange.row 		,
 							...scenery.header
 						}}
 					>
-						<Image 	
+						<Image
+							/* Crypto Image */
 							style 	= { appearance.icon }
 							source 	= {{
-								uri : images.currencies.large ( item.id ) 
+								uri : images.currencies.large ( item.id )
 							}}
-						/>	
-						<Heading 
-							title 	= { item.name + ' ( ' +  item.symbol + ' )' } 
+						/>
+						<Heading
+						  /* Crypto Name */
+							title 	= { item.name + ' ( ' +  item.symbol + ' )' }
 							theme 	= { theme 									}
 							type 	= '1'
 						/>
 					</View>
-					<Tree 
+					<Tree
+					  /* Crypto Graph */
 						data 		= { this.props.graphs.prices.usd 	}
 						error 		= { this.props.graphs.error 		}
 						language 	= { language 						}
@@ -132,21 +135,22 @@ export default connect (
 						theme 		= { theme 							}
 						refresh 	= {() => {
 
-							analytics.event ( 
-								'graph' 	, 
-								'get' 		, 
-								item.name 	, 
+							analytics.event (
+								'graph' 	,
+								'get' 		,
+								item.name 	,
 								'user'
 							);
-							this.props.dispatch ( 
+							this.props.dispatch (
 								actions.get ( item.id )
 							);
 						}}
 					/>
 					<View 	style 	= { appearance.button }>
 						<Button
+							/* Update Portfolio */
 							press 	= {() => {
-								
+
 								this.setState ({
 									modal : true
 								});
@@ -155,7 +159,8 @@ export default connect (
 							value = { action 	}
 						/>
 					</View>
-					<Modal 
+					<Modal
+						/* Update Portfolio */
 						active 		= { this.state.modal 		}
 						amount 		= { this.state.amount 		}
 						item 		= { item 					}
@@ -165,7 +170,8 @@ export default connect (
 						reset 		= { this.close 				}
 						theme 		= { theme 					}
 					/>
-					<Sections  
+					<Sections
+						/* Currency Details - Movement, Prices, Market */
 						language 	= { language 	}
 						theme 		= { theme 		}
 						sections 	= {[
@@ -177,7 +183,7 @@ export default connect (
 										suffix 		: '%' 									,
 										type 		: 'highlight' 							,
 										value 		: item.change.hour
-									} 														, 
+									} 														,
 									{
 										property 	: language.screens.bull.changes.day 	,
 										suffix 		: '%' 									,
@@ -200,7 +206,7 @@ export default connect (
 										prefix 		: currency.symbol 					,
 										property 	: currency.names [ language.id ] 	,
 										value 		: item.prices.fiat
-									} , 
+									} ,
 									{
 										prefix 		: language.denominations.btc.symbol ,
 										property 	: language.denominations.btc.name 	,
@@ -212,11 +218,11 @@ export default connect (
 							{
 								title 		: language.screens.bull.market.title 			,
 								data 		: [
-									{
-										property 	: language.screens.bull.rating 			,
-										type 		: 'highlight' 							,
-										value 		: numbers.format ( item.rating )
-									} 														,
+									// {
+									// 	property 	: language.screens.bull.rating 			,
+									// 	type 		: 'highlight' 							,
+									// 	value 		: numbers.format ( item.rating )
+									// } 														,
 									{
 										prefix 		: currency.symbol 						,
 										property 	: language.screens.bull.market.cap 		,
@@ -229,11 +235,11 @@ export default connect (
 									{
 										property 	: language.screens.bull.market.available ,
 										value 		: item.supply.available
-									} 														, 
+									} 														,
 									{
 										property 	: language.screens.bull.market.total 	,
 										value 		: item.supply.total
-									} 														, 
+									} 														,
 									{
 										prefix 		: currency.symbol 						,
 										property 	: language.screens.bull.market.volume 	,

@@ -67,15 +67,15 @@ export default connect (
 		this.separator 	= this.separator.bind 	( this );
 	}
 
-	row ({ 
-		index , 
-		item 
+	row ({
+		index ,
+		item
 	}) {
 
 		const 	theme = this.props.theme ,
 				style = index % 2 === 0 ? stripe ( theme ).secondary : stripe ( theme ).primary;
 
-		return ( 
+		return (
 			<Currency
 				currency 	= { this.props.currency 	}
 				item 		= { item 					}
@@ -102,12 +102,12 @@ export default connect (
 	refresh () {
 
 		const action = this.props.currencies.items.length > api.limit ? 'stream' : 'get';
-	
-		analytics.event 	( 
-			'currencies' 	, 
-			'refresh' 		, 
-			action 			, 
-			'user' 	
+
+		analytics.event 	(
+			'currencies' 	,
+			'refresh' 		,
+			action 			,
+			'user'
 		);
 		this.props.dispatch ( actions [ action ] ( this.props.currency.id ));
 	}
@@ -121,18 +121,18 @@ export default connect (
 
 			const styles = index === 0 ? 	{
 				...item.styles.touch 		,
-				...appearance.head 
+				...appearance.head
 			} : item.styles.touch;
 
 			return (
 
-				<TouchableOpacity 
+				<TouchableOpacity
 					key 			= { index 					}
 					onPress 		= { item.press.bind ( this )}
 					style 			= { styles 					}
 				>
-					<Text  
-						numberOfLines 	= { 1 					} 
+					<Text
+						numberOfLines 	= { 1 					}
 						style 			= { item.styles.text 	}>
 						{ item.text }
 					</Text>
@@ -173,7 +173,7 @@ export default connect (
 				this.props.dispatch ( actions.order 	( 'rank' 		));
 			} ,
 			styles : {
-				text : { 
+				text : {
 					...items 	[ 'head-text' 	] ,
 					...active 	[ 'rank' 		]
 				} ,
@@ -184,22 +184,22 @@ export default connect (
 			} ,
 			text : language.screens.currencies.headers.rank
 		} ,
-		{
-			press : () => {
-
-				analytics.event 	( 'currencies' , 'order' , 'rating' );
-				this.props.dispatch ( actions.order 	( 'rating' 		));
-			} ,
-			styles : {
-				text : {
-					...items 	[ 'head-text' 	] 	,
-					...appearance.text 				,
-					...active 	[ 'rating' 		]
-				} ,
-				touch : items.cell
-			} ,
-			text : language.screens.currencies.headers.rating
-		} ,
+		// {
+		// 	press : () => {
+    //
+		// 		analytics.event 	( 'currencies' , 'order' , 'rating' );
+		// 		this.props.dispatch ( actions.order 	( 'rating' 		));
+		// 	} ,
+		// 	styles : {
+		// 		text : {
+		// 			...items 	[ 'head-text' 	] 	,
+		// 			...appearance.text 				,
+		// 			...active 	[ 'rating' 		]
+		// 		} ,
+		// 		touch : items.cell
+		// 	} ,
+		// 	text : language.screens.currencies.headers.rating
+		// } ,
 		{
 			press : () => {
 
@@ -212,7 +212,7 @@ export default connect (
 					...appearance.text 				,
 					...active 	[ 'change' 		]
 				} ,
-				touch : items.cell 
+				touch : items.cell
 			} ,
 			text : language.screens.currencies.headers.change
 		} ,
@@ -240,10 +240,10 @@ export default connect (
 				items = list ( theme ) 		;
 
 		if (
-			this.props.currencies.items.length === 0 || 
-			this.props.currencies.error 
+			this.props.currencies.items.length === 0 ||
+			this.props.currencies.error
 		) {
-			
+
 			return null;
 		}
 
@@ -264,12 +264,12 @@ export default connect (
 
 
 		if ( this.props.currencies.loading ) {
-			
+
 			return (
 				<View  style 	= { scenery.body 					}>
-					<Loader 
+					<Loader
 						loading = { this.props.currencies.loading 	}
-						size 	= 'large' 
+						size 	= 'large'
 						theme 	= { theme 							}
 					/>
 				</View>
@@ -280,7 +280,7 @@ export default connect (
 
 			analytics.screen 	( 'currencies:500' 				);
 			return 				(
-				<Error 
+				<Error
 					error 		= { this.props.currencies.error }
 					language 	= { language 					}
 					press 		= { this.refresh 				}
@@ -302,7 +302,7 @@ export default connect (
 								{ this.props.search.value + '"' 		}
 							</Text>
 						</Text>
-					</View> 
+					</View>
 				</View>
 			);
 		}

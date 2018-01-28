@@ -16,7 +16,7 @@ import 		Header 					from '../components/portfolio/header';
 import 		actions 				from '../actions/currencies';
 import 		portfolio 				from '../actions/portfolio';
 import 		api 					from '../api/currencies';
-import 		list 					from '../styles/list';
+import 		list 					from '../styles/list-portfolio';
 import 		style 					from '../styles/portfolio';
 import 		scene 					from '../styles/scene';
 import 		seperator 				from '../styles/seperators';
@@ -24,6 +24,9 @@ import 		stripe 					from '../styles/stripe';
 import 		numbers 				from '../utilities/numbers';
 import 		analytics 				from '../utilities/analytics';
 import 		application 			from '../configuration/application';
+import 		SearchIcon 				from '../components/search/icon';
+import 		SearchInput 			from '../components/search/input';
+import 		AddIcon 				from '../components/search/add';
 
 export default connect (
 
@@ -32,6 +35,7 @@ export default connect (
 		currencies 	: state.currencies 	,
 		portfolio 	: state.portfolio 	,
 		language 	: state.language 	,
+		search 		: state.search 		,
 		theme 		: state.theme
 	})
 
@@ -43,29 +47,8 @@ export default connect (
 				theme 		= screenProps.theme 	;
 
 		return {
-			headerLeft 	: <Action 
-				icon 	= 'ios-share-outline'
-				press 	= {() => {
-
-					const 	platform 	= Platform.OS;
-
-					analytics.event ( 'cryptobullography' , 'share' , 'open' , platform );
-					Share.share 	(
-						{
-							message 	: language.screens.share.summary 	,
-							title 		: language.screens.share.title 		,
-							url 		: application.store ()
-						} , 
-						{
-							dialogTitle : language.screens.share.title 		,
-							tintColor 	: theme.chrome
-						}
-					)
-					.then 	(() 		=> analytics.event ( 'cryptobullography' , 'share' , 'success' 	, platform 	))
-					.catch 	(( error ) 	=> analytics.event ( 'cryptobullography' , 'share' , 'error' 	, platform 	));
-				}}
-				value 	= { language.actions.share }
-			/> ,
+			//headerLeft  : <AddIcon 	/> ,
+			headerRight : <SearchIcon 	/> ,
 			headerTitle : <Header 		/> ,
 			tabBarIcon 	: ({ focused }) => {
 
@@ -99,7 +82,7 @@ export default connect (
 				appearance 	= style ( theme ) 		;
 
 		return [{
-			press 		: () => {} , 
+			press 		: () => {} ,
 			styles 		: {
 				text 	: items [ 'head-text' ] ,
 				touch 	: items.cell
@@ -107,9 +90,9 @@ export default connect (
 			text 		: language.screens.portfolio.headers.name
 		} ,
 		{
-			press 		: () => {} , 
+			press 		: () => {} ,
 			styles 		: {
-				text 	: { 
+				text 	: {
 					...items [ 'head-text' ] ,
 					...appearance.cell
 				} ,
@@ -118,9 +101,9 @@ export default connect (
 			text 		: language.screens.portfolio.headers.amount
 		} ,
 		{
-			press 		: () => {} , 
+			press 		: () => {} ,
 			styles 		: {
-				text 	: { 
+				text 	: {
 					...items [ 'head-text' ] ,
 					...appearance.cell
 				} ,
@@ -129,9 +112,9 @@ export default connect (
 			text 		: language.screens.portfolio.headers.price
 		} ,
 		{
-			press 		: () => {} , 
+			press 		: () => {} ,
 			styles 		: {
-				text 	: { 
+				text 	: {
 					...items [ 'head-text' ] ,
 					...appearance.cell
 				} ,
@@ -142,7 +125,7 @@ export default connect (
 	}
 
 	cells () {
-		
+
 		const 	theme 		= this.props.theme 	,
 				appearance 	= style ( theme ) 	;
 
@@ -150,17 +133,17 @@ export default connect (
 
 			const styles = index === 0 ? 	{
 				...item.styles.touch 		,
-				...appearance.head 
+				...appearance.head
 			} : item.styles.touch;
 
 			return (
-				<TouchableOpacity 
+				<TouchableOpacity
 					key 			= { index 					}
 					onPress 		= { item.press.bind ( this )}
 					style 			= { styles 					}
 				>
-					<Text  
-						numberOfLines 	= { 1 					} 
+					<Text
+						numberOfLines 	= { 1 					}
 						style 			= {{
 							...item.styles.text ,
 							...{
@@ -178,13 +161,13 @@ export default connect (
 
 		const 	theme = this.props.theme 	,
 				items = list ( theme ) 		;
-	
+
 		if (
-			this.props.currencies.error 				|| 
-			this.props.currencies.items.length	=== 0 	|| 
-			this.props.portfolio.items.length 	=== 0 
+			this.props.currencies.error 				||
+			this.props.currencies.items.length	=== 0 	||
+			this.props.portfolio.items.length 	=== 0
 		) {
-			
+
 			return null;
 		}
 
@@ -201,12 +184,12 @@ export default connect (
 	}
 
 	refresh () {
-			
-		analytics.event ( 
-			'portfolio' , 
-			'refresh' 	, 
+
+		analytics.event (
+			'portfolio' ,
+			'refresh' 	,
 			'stream' 	,
-			'user' 		
+			'user'
 		);
 		this.props.dispatch ( actions.stream ( this.props.currency.id ));
 	}
@@ -215,7 +198,7 @@ export default connect (
 		index ,
 		item
 	}) {
-		
+
 		const 	theme 		= this.props.theme 																,
 				language 	= this.props.language 															,
 				styles 		= index % 2 === 0 ? stripe ( theme ).secondary : stripe ( theme ).primary 		,
@@ -244,7 +227,7 @@ export default connect (
 					...appearance.missing.view ,
 					...styles
 				}}>
-					<Text 	
+					<Text
 						ellipsizeMode 	= 'tail'
 						numberOfLines 	= { 1 						}
 						style 			= { appearance.missing.text }
@@ -252,7 +235,7 @@ export default connect (
 						{ item.name } { language.errors [ '500' ]}
 					</Text>
 					<View 	style 	= { appearance.missing.row 		}>
-						<TouchableOpacity 
+						<TouchableOpacity
 							onPress = {() => this.remove ( item.id )}
 							style 	= { appearance.missing.icon 	}
 						>
@@ -262,7 +245,7 @@ export default connect (
 								color 	= { theme.negative 		}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity 
+						<TouchableOpacity
 							onPress = { this.refresh 			}
 							style 	= { appearance.missing.icon }
 						>
@@ -291,7 +274,7 @@ export default connect (
 	}
 
 	separator ( section , row , highlighted ) {
-		
+
 		const theme = this.props.theme;
 
 		return (
@@ -334,20 +317,30 @@ export default connect (
 		);
 	}
 
+	portfolioFilter () {
+			// If there is a search term - filter the currencies by it
+			return this.props.search.value ? this.props.portfolio.items.filter (( item , index ) => {
+
+			// Filter if the currency matches the name of symbol of a token
+			return item.name.toLowerCase ().indexOf ( this.props.search.value.toLowerCase ()) > -1;
+		}) : this.props.portfolio.items;
+	}
+
 	render () {
 
 		const 	language 	= this.props.language 	,
 				theme 		= this.props.theme 		,
 				scenery 	= scene ( theme ) 		,
-				appearance 	= style ( theme ) 		;
+				appearance 	= style ( theme ) ,
+				portfolioData = this.portfolioFilter();
 
 		if ( this.props.currencies.loading ) {
 
 			return (
 				<View 	style 	= { scenery.body 			}>
-					<Loader 
+					<Loader
 						loading = { this.props.currencies.loading 	}
-						size 	= 'large' 
+						size 	= 'large'
 						theme 	= { theme 							}
 					/>
 				</View>
@@ -358,7 +351,7 @@ export default connect (
 
 			analytics.screen 	( 'portfolio:500' 				);
 			return 				(
-				<Error 
+				<Error
 					error 		= { this.props.currencies.error }
 					language 	= { language 					}
 					press 		= { this.refresh 				}
@@ -370,9 +363,10 @@ export default connect (
 
 		return 				(
 			<View style = { scenery.body }>
+				<SearchInput  	/>
 				{ this.header ()}
-				<FlatList 
-					data 					= { this.props.portfolio.items 	}
+				<FlatList
+					data 					= {  portfolioData	 }
 					ItemSeparatorComponent 	= { this.separator 				}
 					keyExtractor 			= {( item , index ) => index 	}
 					ListEmptyComponent 		= {

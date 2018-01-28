@@ -1,7 +1,7 @@
 
 import 		React 			from 'react';
-import { 	Platform 	, 
-			StatusBar 	, 
+import { 	Platform 	,
+			StatusBar 	,
 			View 		} 	from 'react-native';
 import { 	connect 	} 	from 'react-redux';
 import 		Navigation 		from '../navigations/router';
@@ -23,14 +23,14 @@ export default connect (
 		super 	( props );
 
 		// Only fire the application load data once
-		analytics.event 	( 'cryptobullography' , 'loaded' );
+		analytics.event 	( 'blackapp' , 'loaded' );
 		this.dimensions 	();
 
 		this.navigate = this.navigate.bind ( this );
 	}
 
 	dimensions () {
-		
+
 		// Everytime a theme or language is changed update the GA dimension
 		analytics.dimension ( 'language' 	, this.props.language.names.en 	);
 		analytics.dimension ( 'theme' 		, this.props.theme.names.en 	);
@@ -57,12 +57,12 @@ export default connect (
 			<View style = { appearance.main }>
 				{ Platform.OS === 'ios' 	&& <StatusBar 	barStyle 	= 'default' 				/> }
 				{ Platform.OS === 'android' && <View 		style 		= { appearance.statusbar } 	/> }
-				<Navigation 
+				<Navigation
 					onNavigationStateChange = { this.navigate }
 					screenProps 			= {{
 						language 	: language ,
 						theme 		: theme
-					}} 
+					}}
 				/>
 			</View>
 		);

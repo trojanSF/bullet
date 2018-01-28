@@ -42,12 +42,12 @@ export default class Bar extends React.PureComponent {
 					paddingRight 	: padding.right
 				}
 			}}>
-				<Animated.View 
+				<Animated.View
 					style = {{
-						...style.highlight , 
+						...style.highlight ,
 						...{
 							backgroundColor : color 							,
-							borderColor 	: colour.shade ( color , -0.5 ) 	,
+							borderColor 	: colour.shade ( color , -1 ) 	,
 							paddingTop 		: height
 						}
 					}}

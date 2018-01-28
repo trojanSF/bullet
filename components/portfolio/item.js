@@ -1,11 +1,11 @@
 
 import 		React 					from 'react';
 import { 	Image 				,
-			Text 				, 
+			Text 				,
 			TouchableOpacity 	,
 			View				} 	from 'react-native';
 import 		Integer 				from '../utilities/integer';
-import 		list 					from '../../styles/list';
+import 		list 					from '../../styles/list-portfolio';
 import 		style 					from '../../styles/portfolio';
 import 		images 					from '../../api/images';
 import 		numbers 				from '../../utilities/numbers';
@@ -21,8 +21,8 @@ export default class Item extends React.PureComponent {
 
 	detail () {
 
-		this.props.navigation.navigate 	( 
-			'detail' , 
+		this.props.navigation.navigate 	(
+			'detail' ,
 			{
 				item : this.props.data
 			}
@@ -40,24 +40,24 @@ export default class Item extends React.PureComponent {
 
 		return (
 			<View>
-				<TouchableOpacity 
+				<TouchableOpacity
 					style 	= {{
 						...items.row 	,
 						...this.props.style
-					}} 
+					}}
 					onPress = { this.detail }
 				>
 					<View style = {{
 						...items.cell ,
-						...appearance.head 
+						...appearance.head
 					}}>
-						<Image 	
+						<Image
 							style 	= { appearance.icon }
 							source 	= {{
-								uri : images.currencies.medium ( item.id ) 
+								uri : images.currencies.medium ( item.id )
 							}}
 						/>
-						<Text 
+						<Text
 							numberOfLines 	= { 1 }
 							ellipsizeMode 	= 'tail'
 							style 			= {{
@@ -68,7 +68,7 @@ export default class Item extends React.PureComponent {
 							{ item.name }
 						</Text>
 					</View>
-					<Text 
+					<Text
 						numberOfLines 	= { 1 }
 						style 			= {{
 							...items.cell 				,
@@ -78,7 +78,7 @@ export default class Item extends React.PureComponent {
 					>
 						{ numbers.format ( item.amount	)}
 					</Text>
-					<Text 
+					<Text
 						numberOfLines 	= { 1 }
 						style 			= {{
 							...items.cell 				,
@@ -87,7 +87,7 @@ export default class Item extends React.PureComponent {
 						}}>
 						{ item.price ? currency.symbol + numbers.format ( item.price.toFixed ( 2 )) : language.errors [ 500 ]}
 					</Text>
-					<Text 
+					<Text
 						numberOfLines 	= { 1 }
 						style 			= {{
 							...items.cell 				,

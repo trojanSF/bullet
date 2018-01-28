@@ -1,7 +1,7 @@
 
 import 		React 					from 'react';
 import { 	Image 				,
-			Text 				, 
+			Text 				,
 			TouchableOpacity 	,
 			View				} 	from 'react-native';
 import 		Integer 				from '../utilities/integer';
@@ -20,8 +20,8 @@ export default class Item extends React.PureComponent {
 
 	detail () {
 
-		this.props.navigation.navigate 	( 
-			'detail' , 
+		this.props.navigation.navigate 	(
+			'detail' ,
 			{
 				item : this.props.item
 			}
@@ -40,25 +40,25 @@ export default class Item extends React.PureComponent {
 		return (
 
 			<View>
-				<TouchableOpacity 
+				<TouchableOpacity
 					style 	= {{
 						...items.row 	,
 						...this.props.style
-					}} 
+					}}
 					onPress = { this.detail 	}
 				>
 					<View style = {{
 						...items.cell ,
-						...appearance.head 
+						...appearance.head
 					}}>
-						<Image 	
+						<Image
 							style 	= { appearance.icon }
 							source 	= {{
-								uri : images.currencies.medium ( item.id ) 
+								uri : images.currencies.medium ( item.id )
 							}}
 						/>
-						
-						<Text 
+
+						<Text
 							ellipsizeMode 	= 'tail'
 							numberOfLines 	= { 1 }
 							style 			= {{
@@ -69,7 +69,7 @@ export default class Item extends React.PureComponent {
 							{ item.name }
 						</Text>
 					</View>
-					<Text 
+					{/*<Text
 						numberOfLines 	= { 1 }
 						style 			= {{
 							...items.cell 				,
@@ -78,8 +78,8 @@ export default class Item extends React.PureComponent {
 						}}
 					>
 						{ item.rating ? numbers.format ( item.rating ) : language.errors [ 500 ]}
-					</Text>
-					<Integer 
+					</Text>*/}
+					<Integer
 						language 	= { language 			}
 						style 		= {{
 							...items.cell 				,
@@ -88,10 +88,10 @@ export default class Item extends React.PureComponent {
 						}}
 						suffix 		= '%'
 						theme 		= { theme 				}
-						type 		= 'highlight' 
+						type 		= 'highlight'
 						value 		= { item.change.day }
 					/>
-					<Text 
+					<Text
 						numberOfLines 	= { 1 }
 						style 			= {{
 							...items.cell 				,

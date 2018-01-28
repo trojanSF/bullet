@@ -38,26 +38,26 @@ export default connect (
 				theme 		= screenProps.theme 	;
 
 		return {
-			headerLeft 	: <Action 
+			headerLeft 	: <Action
 				icon 	= 'ios-share-outline'
 				press 	= {() => {
 
 					const 	platform 	= Platform.OS;
 
-					analytics.event ( 'cryptobullography' , 'share' , 'open' , platform );
+					analytics.event ( 'blackapp' , 'share' , 'open' , platform );
 					Share.share 	(
 						{
 							message 	: language.screens.share.summary 	,
 							title 		: language.screens.share.title 		,
 							url 		: application.store ()
-						} , 
+						} ,
 						{
 							dialogTitle : language.screens.share.title 		,
 							tintColor 	: theme.chrome
 						}
 					)
-					.then 	(() 		=> analytics.event ( 'cryptobullography' , 'share' , 'success' 	, platform 	))
-					.catch 	(( error ) 	=> analytics.event ( 'cryptobullography' , 'share' , 'error' 	, platform 	));
+					.then 	(() 		=> analytics.event ( 'blackapp' , 'share' , 'success' 	, platform 	))
+					.catch 	(( error ) 	=> analytics.event ( 'blackapp' , 'share' , 'error' 	, platform 	));
 				}}
 				value 	= { language.actions.share }
 			/> ,
@@ -79,19 +79,19 @@ export default connect (
 
 	constructor ( props ) {
 		super 	( props );
-		
+
 		this.refresh = this.refresh.bind ( this );
 	}
 
 	refresh () {
 
 		const action = this.props.bull.competitors > api.limit ? 'stream' : 'get';
-		
-		analytics.event ( 
+
+		analytics.event (
 			'bull' 		,
 			'load' 		,
 			action 		,
-			'application' 
+			'application'
 		);
 		this.props.dispatch ( actions [ action ] ( this.props.currency.id ));
 	}
@@ -107,9 +107,9 @@ export default connect (
 
 			return (
 				<View  style 	= { scenery.body 			}>
-					<Loader 
+					<Loader
 						loading = { this.props.bull.loading }
-						size 	= 'large' 
+						size 	= 'large'
 						theme 	= { theme 					}
 					/>
 				</View>
@@ -120,7 +120,7 @@ export default connect (
 
 			analytics.screen 	( 'bull:500' 				);
 			return 				(
-				<Error 
+				<Error
 					error 		= { this.props.bull.error 	}
 					language 	= { language 				}
 					press 		= { this.refresh 			}
@@ -135,7 +135,7 @@ export default connect (
 
 			analytics.screen 	( 'bull:404' 		);
 			return 				(
-				<NotFound 
+				<NotFound
 					bull 		= { this.props.bull }
 					language 	= { language 		}
 					theme 		= { theme 			}
@@ -145,7 +145,7 @@ export default connect (
 
 		return 					(
 			<ScrollView style 	= { scenery.body 		}>
-				<Overview 
+				<Overview
 					currency 	= { this.props.currency }
 					bull 		= { this.props.bull 	}
 					language 	= { language 			}
@@ -154,8 +154,8 @@ export default connect (
 				<View style 	=  { appearance.button 	}>
 					<Button
 						press 	= {() => {
-							this.props.navigation.navigate 	( 
-								'detail' , 
+							this.props.navigation.navigate 	(
+								'detail' ,
 								{
 									item : this.props.bull
 								}
