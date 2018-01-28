@@ -33,7 +33,7 @@ const Root = TabNavigator (
 		portfolio 	: {
 			screen 	: Portfolio
 		} ,
-		
+
 		news 		: {
 			screen 	: News
 		} ,
@@ -48,6 +48,7 @@ const Root = TabNavigator (
 		swipeEnabled 		: true 		,
 		tabBarComponent 	: TabBar 	,
 		tabBarPosition 		: 'bottom'	,
+		initialRouteName : 'portfolio', 
 		tabBarOptions 		: {
 			showLabel 		: false
 		}
@@ -109,4 +110,3 @@ export default StackNavigator ({
 		}
 	}
 );
-
