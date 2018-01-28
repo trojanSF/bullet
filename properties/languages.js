@@ -10,11 +10,11 @@ import vietnamese 	from './languages/vietnamese';
 
 export default {
 	...english 		,
-	...chinese 		,
-	...french 		,
-	...german 		,
-	...malay 		,
+	//...chinese 		,
+	//...french 		,
+	//...german 		,
+	//...malay 		,
 	//...spanish 		,
-	...turkish 		,
-	...vietnamese
+	//...turkish 		,
+	//...vietnamese
 };
