@@ -17,6 +17,7 @@ import 		configuration 	from './configuration/store';
 import 		analytics 		from './utilities/analytics';
 import 		cache 			from './utilities/cache';
 
+Sentry.enableInExpoDevelopment = true // true = allow debugging in DEV
 Sentry.config ( application.sentry ).install ();
 
 const store = configuration ();
@@ -35,17 +36,17 @@ export default class Application extends React.Component {
 				images 	: [] ,
 				fonts 	: [
 					Ionicons.font ,
-					{ 
+					{
 						'space-mono' : require ( './assets/fonts/SpaceMono-Regular.ttf' )
 					}
 				]
 			});
-		} 
-		
+		}
+
 		catch ( error ) {
 			console.log ( error.message );
-		} 
-		
+		}
+
 		finally {
 
 			this.setState ({
@@ -86,13 +87,13 @@ export default class Application extends React.Component {
 		if ( this.state.cache ) {
 
 			return (
-				
+
 				<Provider store = { store }>
 					<Main />
 				</Provider>
 			);
-		} 
-		
+		}
+
 		else {
 
 			return <AppLoading />;
