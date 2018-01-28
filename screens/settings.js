@@ -30,26 +30,26 @@ export default connect (
 				theme 		= screenProps.theme 	;
 
 		return {
-			headerLeft 	: <Action 
+			headerLeft 	: <Action
 				icon 	= 'ios-share-outline'
 				press 	= {() => {
 
 					const 	platform 	= Platform.OS;
 
-					analytics.event ( 'cryptobullography' , 'share' , 'open' , platform );
+					analytics.event ( 'blackapp' , 'share' , 'open' , platform );
 					Share.share 	(
 						{
 							message 	: language.screens.share.summary 	,
 							title 		: language.screens.share.title 		,
 							url 		: application.store ()
-						} , 
+						} ,
 						{
 							dialogTitle : language.screens.share.title 		,
 							tintColor 	: theme.chrome
 						}
 					)
-					.then 	(() 		=> analytics.event ( 'cryptobullography' , 'share' , 'success' 	, platform 	))
-					.catch 	(( error ) 	=> analytics.event ( 'cryptobullography' , 'share' , 'error' 	, platform 	));
+					.then 	(() 		=> analytics.event ( 'blackapp' , 'share' , 'success' 	, platform 	))
+					.catch 	(( error ) 	=> analytics.event ( 'blackapp' , 'share' , 'error' 	, platform 	));
 				}}
 				value 	= { language.actions.share }
 			/> ,
@@ -77,10 +77,12 @@ export default connect (
 				name 	: language.screens.exchanges.title 		,
 				url 	: 'exchanges'
 			} ,
+
 			{
 				name 	: language.screens.converter.title 		,
 				url 	: 'converter'
 			} ,
+
 			{
 				name 	: language.screens.currency.title 		,
 				url 	: 'currency'
@@ -90,26 +92,26 @@ export default connect (
 				name 	: language.screens.theme.title 			,
 				url 	: 'themes'
 			} ,
-			
+
 			{
 				name 	: language.screens.language.title 		,
 				url 	: 'languages'
 			} ,
-			
-			{
-				name 	: language.screens.themes.title  		,
-				url 	: 'theme'
-			} ,
-			
-			{
-				name 	: language.screens.translations.title  	,
-				url 	: 'language'
-			} ,
-			
-			{
-				name 	: language.screens.donate.title  		,
-				url 	: 'donate'
-			}
+
+			// {
+			// 	name 	: language.screens.themes.title  		,
+			// 	url 	: 'theme'
+			// } ,
+
+			// {
+			// 	name 	: language.screens.translations.title  	,
+			// 	url 	: 'language'
+			// } ,
+
+			// {
+			// 	name 	: language.screens.donate.title  		,
+			// 	url 	: 'donate'
+			// }
 		];
 	}
 
@@ -124,10 +126,10 @@ export default connect (
 			const background = index % 2 === 0 ? theme.base : theme.primary;
 
 			return (
-				<TouchableOpacity 
+				<TouchableOpacity
 					key 	= { index 						}
 					onPress = {() => navigate ( setting.url )}
-					style 	= {{ 
+					style 	= {{
 						...appearance.control ,
 						...{
 							backgroundColor : background
@@ -156,9 +158,9 @@ export default connect (
 
 		return 	(
 			<ScrollView style = { scenery.body }>
-				<TouchableOpacity 
+				{/*<TouchableOpacity
 					onPress = {() => Linking.openURL ( application.cryptocoinminer ())}
-					style 	= {{ 
+					style 	= {{
 						...appearance.control ,
 						...{
 							backgroundColor : theme.primary
@@ -173,7 +175,7 @@ export default connect (
 						size 	= { 18 							}
 						color 	= { theme.secondary 			}
 					/>
-				</TouchableOpacity>
+				</TouchableOpacity> */}
 				{ this.contents ()}
 			</ScrollView>
 		);
