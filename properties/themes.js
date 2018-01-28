@@ -17,16 +17,16 @@ import lagoon 		from './themes/lagoon';
 export default {
 	...defaults 	,
 	...midnight 	,
-	...google 		,
-	...marley 		,
-	...heineken 	,
-	...matrix 		,
+	//...google 		,
+	//...marley 		,
+	//...heineken 	,
+	//...matrix 		,
 	...facebook 	,
-	...windows 		,
-	...killbill 	,
-	...twitter 		,
-	...mcdonalds 	,
-	...amazon 		,
-	...lego 		,
-	...lagoon
+	//...windows 		,
+	//...killbill 	,
+	//...twitter 		,
+	//...mcdonalds 	,
+	//...amazon 		,
+	//...lego 		,
+	//...lagoon
 };
