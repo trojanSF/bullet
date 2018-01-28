@@ -1,11 +1,11 @@
 {
 	"expo" : {
-		"name" : "Cryptobullography",
-		"description" : "The latest Bull on crytpo coins and blockchain tokens.",
-		"slug" : "bullet",
-		"privacy" : "public",
+		"name" : "Blackapp",
+		"description" : "Buy, sell, and manage all your crypto coins and blockchain tokens!",
+		"slug" : "blackapp",
+		"privacy" : "unlisted",
 		"sdkVersion" : "20.0.0",
-		"version" : "6.1.0",
+		"version" : "1.0.0",
 		"orientation" : "portrait",
 		"primaryColor" : "#000",
 		"icon" : "./assets/icons/application.png",
@@ -23,11 +23,11 @@
 			"assetExts" : ["ttf"]
 		},
 		"android": {
-			"package": "com.webstew.bullet" ,
+			"package": "com.black.app" ,
 			"versionCode": 5
 		} ,
 		"ios" : {
-			"bundleIdentifier": "com.webstew.bullet" ,
+			"bundleIdentifier": "com.black.app" ,
 			"supportsTablet" : true
 		} ,
 		"hooks": {
@@ -35,9 +35,9 @@
 				{
 					"file": "sentry-expo/upload-sourcemaps",
 					"config": {
-						"organization": "stuart-pretorius",
-						"project": "cryptobullography",
-						"authToken": "ed48dbbf8e374dcdaa813a6850dbf06e5f56835566114b728c4215ecbe7aad03"
+						"organization": "black",
+						"project": "black",
+						"authToken": "0bae79ceed3c4ae3aafacb429204943f3100571a6fc04c2c9c6cc7bdd05dcdc9"
 					}
 				}
 			]
