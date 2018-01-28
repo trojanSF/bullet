@@ -51,7 +51,7 @@ export default {
 
 	setup () {
 
-		if ( ! __DEV__ ) {
+		if ( ! __DEV__ || __DEV__ ) {
 
 			// Setup Amplitude Tracking
 			Amplitude.initialize 		( amplitude.uid 		);
@@ -82,7 +82,7 @@ export default {
 
 		let parameters 	= '';
 
-		if ( ! __DEV__ ) {
+		if ( ! __DEV__ || __DEV__ ) {
 
 			parameters 	+= label ? '&el=' 	+ strings.datalise 	( label 		) 													: '';
 			parameters 	+= value ? '&cd' 	+ ( Object.keys 	( dimensions 	).length + 1 ) + '=' + strings.datalise ( value ) 	: '';
@@ -108,7 +108,7 @@ export default {
 
 	screen ( screen ) {
 
-		if ( ! __DEV__ ) {
+		if ( ! __DEV__ || __DEV__ ) {
 
 			// Send analytics to Amplitude
 			Amplitude.logEventWithProperties (
