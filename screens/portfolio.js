@@ -26,7 +26,7 @@ import 		analytics 				from '../utilities/analytics';
 import 		application 			from '../configuration/application';
 import 		SearchIcon 				from '../components/search/icon';
 import 		SearchInput 			from '../components/search/input';
-import 		AddIcon 				from '../components/search/add';
+//import 		AddIcon 				from '../components/search/add';
 
 export default connect (
 
