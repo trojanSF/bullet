@@ -15,9 +15,9 @@ const 	configuration 	= {
 	} ,
 
 	amplitude 		= {
-		uid 		: 'bdc55b3cbe9aa875abea6c2c4645b912' 	,
+		uid 		: '3b6657c6870649e130fe0a3fe89e23bb' 	,
 	} ,
-	
+
 	google 			= {
 		endpoint 	: '' 											,
 		options 	:  {
@@ -26,7 +26,7 @@ const 	configuration 	= {
 			  'User-Agent': configuration.agent 					,
 			}
 		} 															,
-		uid 		: 'UA-105110895-1' 								,
+		uid 		: 'UA-113204033-1' 								,
 		url 		: 'https://www.google-analytics.com/collect' 	,
 		version 	: 1
 	} ,
@@ -35,11 +35,11 @@ const 	configuration 	= {
 
 		console.log ( 'Error in Google Analytics' );
 	} ,
-	
+
 	parametise 		= () => {
-			
+
 		let data = '';
-		
+
 		Object.keys ( dimensions ).forEach (( value , index ) => {
 			data += '&cd' + ( index + 1 ) + '=' + value + ':' + dimensions [ value ];
 		});
@@ -83,12 +83,12 @@ export default {
 		let parameters 	= '';
 
 		if ( ! __DEV__ ) {
-			
+
 			parameters 	+= label ? '&el=' 	+ strings.datalise 	( label 		) 													: '';
 			parameters 	+= value ? '&cd' 	+ ( Object.keys 	( dimensions 	).length + 1 ) + '=' + strings.datalise ( value ) 	: '';
-	
+
 			Amplitude.logEventWithProperties (
-				strings.datalise ( category ) , 
+				strings.datalise ( category ) ,
 				{
 					...dimensions 			,
 					action 		: strings.datalise ( action 	) ,
@@ -97,11 +97,11 @@ export default {
 					value 		: strings.datalise ( value 		)
 				}
 			);
-			
+
 			// Send analytics to Google
-			fetch ( 
-				encodeURI ( google.endpoint + '&t=event&ec=' + strings.datalise ( category ) + '&ea=' + strings.datalise ( action ) + parameters + parametise ()) , 
-				google.options 
+			fetch (
+				encodeURI ( google.endpoint + '&t=event&ec=' + strings.datalise ( category ) + '&ea=' + strings.datalise ( action ) + parameters + parametise ()) ,
+				google.options
 			).catch ( error );
 		}
 	} ,
@@ -113,16 +113,16 @@ export default {
 			// Send analytics to Amplitude
 			Amplitude.logEventWithProperties (
 				'screen' 			,
-				{ 
+				{
 					...dimensions 	,
 					view : strings.datalise ( screen )
 				}
 			);
-			
+
 			// Send analytics to Google
-			fetch ( 
-				encodeURI ( google.endpoint + '&t=screenview&cd=' + strings.datalise ( screen ) + parametise ()) , 
-				google.options 
+			fetch (
+				encodeURI ( google.endpoint + '&t=screenview&cd=' + strings.datalise ( screen ) + parametise ()) ,
+				google.options
 			).catch ( error );
 		}
 	}
