@@ -22,16 +22,16 @@ import 		header 				from '../styles/header';
 const Root = TabNavigator (
 
 	{
-		bull 		: {
-			screen 	: Bull
+		// bull 		: {
+		// 	screen 	: Bull
+		// } ,
+
+		portfolio 	: {
+			screen 	: Portfolio
 		} ,
 
 		currencies 	: {
 			screen 	: Currencies
-		} ,
-
-		portfolio 	: {
-			screen 	: Portfolio
 		} ,
 
 		news 		: {
@@ -48,7 +48,7 @@ const Root = TabNavigator (
 		swipeEnabled 		: true 		,
 		tabBarComponent 	: TabBar 	,
 		tabBarPosition 		: 'bottom'	,
-		initialRouteName : 'portfolio', 
+		initialRouteName : 'portfolio',
 		tabBarOptions 		: {
 			showLabel 		: false
 		}
