@@ -2,7 +2,7 @@
 import Expo from 'expo';
 
 const configuration = {
-		name 	: 'cryptobullography' ,
+		name 	: 'blackapp' ,
 		version : 1
 	} ,
 
@@ -18,20 +18,20 @@ export default {
 	connection 	:  connection ,
 
 	portfolio 	: {
-		
+
 		/**
 		 * Setup function to create the table to keep our saved settings in
 		 */
-		setup 	: () => { 
-			
+		setup 	: () => {
+
 			return connection.transaction (( transaction ) => {
 
-				transaction.executeSql ( 
-					'CREATE TABLE IF NOT EXISTS portfolio ( ' 	+ 
+				transaction.executeSql (
+					'CREATE TABLE IF NOT EXISTS portfolio ( ' 	+
 						'id TEXT NOT NULL PRIMARY KEY , 	' 	+
-						'amount TEXT NOT NULL ,' 				+ 
-						'name TEXT NOT NULL ' 					+ 
-					');' 
+						'amount TEXT NOT NULL ,' 				+
+						'name TEXT NOT NULL ' 					+
+					');'
 				);
 			});
 		} ,
@@ -40,11 +40,11 @@ export default {
 
 			return connection.transaction (( transaction ) => {
 
-				transaction.executeSql ( 
+				transaction.executeSql (
 					'INSERT OR REPLACE INTO portfolio ( id , amount , name ) ' 	+
 					'VALUES ( ? , ? , ? );' 									,
-					[ 
-						id 														, 
+					[
+						id 														,
 						amount 													,
 						name
 					] 															,
@@ -57,30 +57,30 @@ export default {
 		get 	: ( callback ) => {
 
 			return connection.transaction (( transaction ) => {
-				
+
 				//transaction.executeSql ( "DROP TABLE IF EXISTS portfolio"  );
 
 				transaction.executeSql (
 					'SELECT * FROM portfolio' 	,
 					null 						,
 					callback 					,
-					error 
+					error
 
 				);
 			});
 		} ,
-		
+
 		delete 	: ( id , callback ) => {
-			
+
 			return connection.transaction (( transaction ) => {
 
 				transaction.executeSql (
 					'DELETE FROM portfolio WHERE id = ?' 	,
-					[ 
-						id 
+					[
+						id
 					] 										,
 					callback 								,
-					error 
+					error
 
 				);
 			});
@@ -92,15 +92,15 @@ export default {
 		/**
 		 * Setup function to create the table to keep our saved settings in
 		 */
-		setup 	: () => { 
-			
+		setup 	: () => {
+
 			return connection.transaction (( transaction ) => {
 
-				transaction.executeSql ( 
-					'CREATE TABLE IF NOT EXISTS settings ( 	' 	+ 
+				transaction.executeSql (
+					'CREATE TABLE IF NOT EXISTS settings ( 	' 	+
 						'id TEXT NOT NULL PRIMARY KEY , 	' 	+
-						'value TEXT NOT NULL ' 					+ 
-					');' 
+						'value TEXT NOT NULL ' 					+
+					');'
 				);
 			});
 		} ,
@@ -109,12 +109,12 @@ export default {
 
 			return connection.transaction (( transaction ) => {
 
-				transaction.executeSql ( 
+				transaction.executeSql (
 					'INSERT OR REPLACE INTO settings ( id , value ) ' 	+
 					'VALUES ( ? , ? );' 								,
-					[ 
-						id 												, 
-						value 
+					[
+						id 												,
+						value
 					] 													,
 					callback 											,
 					error
@@ -128,11 +128,11 @@ export default {
 
 				transaction.executeSql (
 					'SELECT * FROM settings WHERE id = ?' 	,
-					[ 
-						id 
+					[
+						id
 					] 										,
 					callback 								,
-					error 
+					error
 
 				);
 			});
