@@ -180,6 +180,11 @@ export default {
 						id 		: 'n/a'
 					}
 				]
+			} ,
+
+			about 		: {
+				title 		: 'About' ,
+				body 		: 'The Black App allows you to buy, sell, and track all your cryptocurrencies on any wallet!\n\nTo learn more about the Black App, please contact us at info@blackapp.io.'  ,
 			}
 		}
 	}

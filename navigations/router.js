@@ -17,6 +17,7 @@ import 		Settings 			from '../screens/settings';
 import 		Theme 				from '../screens/theme';
 import 		Themes 				from '../screens/themes';
 import 		Donate 				from '../screens/donate';
+import 		About 				from '../screens/about';
 import 		header 				from '../styles/header';
 
 const Root = TabNavigator (
@@ -94,6 +95,10 @@ export default StackNavigator ({
 
 		languages 	: {
 			screen 	: Languages
+		} ,
+
+		about 	: {
+			screen 	: About
 		}
 	} ,
 

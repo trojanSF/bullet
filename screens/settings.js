@@ -112,6 +112,12 @@ export default connect (
 			// 	name 	: language.screens.donate.title  		,
 			// 	url 	: 'donate'
 			// }
+
+			{
+				name 	: language.screens.about.title  		,
+				url 	: 'about'
+			} ,
+
 		];
 	}
 
